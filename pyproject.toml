@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "EAIOS is an integrated platform for building, running, and governing AI systems across an enterprise. It brings the core building blocks of enterprise AI together under one roof, so teams can develop AI applications faster while keeping governance consistent and planned."
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.162.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
