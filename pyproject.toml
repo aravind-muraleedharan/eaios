@@ -5,6 +5,7 @@ description = "EAIOS is an integrated platform for building, running, and govern
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "anthropic>=2.3.0",
     "fastapi[standard]>=0.162.0",
     "pydantic-settings>=2.16.2",
 ]

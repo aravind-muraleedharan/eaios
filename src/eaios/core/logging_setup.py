@@ -12,7 +12,7 @@ MAX_BYTES = 5_000_000 # Rotate after 5 MB
 BACKUP_COUNT = 5 # Keep the most recent rotates files.
 
 
-class jsonFormatter(logging.Formatter):
+class JsonFormatter(logging.Formatter):
     """Format each log record as a single line of JSON."""
 
     def format(self, record: logging.LogRecord) -> str:
@@ -37,7 +37,7 @@ class jsonFormatter(logging.Formatter):
 def setup_logging(level: str) -> None:
     """Send JSON logs to the console and to a rotating file."""
     LOG_DIR.mkdir(exist_ok=True)
-    formatter = jsonFormatter()
+    formatter = JsonFormatter()
 
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
