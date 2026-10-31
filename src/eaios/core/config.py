@@ -4,7 +4,7 @@ from functools import lru_cache
 from typing import Literal
 from pathlib import Path
 
-from pydantic import SecretStr
+from pydantic import SecretStr, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -29,6 +29,9 @@ class Settings(BaseSettings):
     claude_model: str = "claude-haiku-5-5"
     claude_max_tokens: int = 128
     claude_timeout_sec: float = 30.0
+
+    # Chat
+    chat_max_ques_chars: int = Field(default=4000, gt=0, le=100_000)
 
 
 @lru_cache
