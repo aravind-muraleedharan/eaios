@@ -6,10 +6,13 @@ from collections.abc import Awaitable, Callable
 from importlib.metadata import version
 
 from fastapi import FastAPI, Request, Response
+from fastapi.staticfiles import StaticFiles
 
 from eaios.core.config import get_settings
 from eaios.core.logging_setup import setup_logging
 from eaios.api import chat
+from eaios.web import pages
+
 
 settings = get_settings()
 setup_logging(settings.log_level)
@@ -28,6 +31,8 @@ app = FastAPI(
     redoc_url = "/redoc" if docs_enabled else None,
 )
 app.include_router(chat.router)
+app.include_router(pages.router)
+app.mount("/static", StaticFiles(directory=pages.STATIC_DIR), name="static")
 
 
 logger.info(
