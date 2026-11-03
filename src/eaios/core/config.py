@@ -32,6 +32,7 @@ class Settings(BaseSettings):
 
     # Chat
     chat_max_ques_chars: int = Field(default=4000, gt=0, le=100_000)
+    log_chat_content: bool = False
 
 
 @lru_cache

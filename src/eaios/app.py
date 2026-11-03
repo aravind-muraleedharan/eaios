@@ -9,7 +9,7 @@ from fastapi import FastAPI, Request, Response
 
 from eaios.core.config import get_settings
 from eaios.core.logging_setup import setup_logging
-
+from eaios.api import chat
 
 settings = get_settings()
 setup_logging(settings.log_level)
@@ -27,6 +27,7 @@ app = FastAPI(
     docs_url = "/docs" if docs_enabled else None,
     redoc_url = "/redoc" if docs_enabled else None,
 )
+app.include_router(chat.router)
 
 
 logger.info(
