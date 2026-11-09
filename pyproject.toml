@@ -17,7 +17,22 @@ build-backend = "hatchling.build"
 [dependency-groups]
 dev = [
     "pytest>=9.2.0",
+    "ruff>=0.17.4",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+
+[tool.ruff.lint]
+select = [
+    "E",   # style errors (pycodestyle)
+    "F",   # likely bugs: unused imports, undefined names (pyflakes)
+    "I",   # import order
+    "B",   # common bug patterns (bugbear)
+    "UP",  # modern Python syntax (pyupgrade)
+    "S",   # security issues (bandit)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # assert is normal in tests

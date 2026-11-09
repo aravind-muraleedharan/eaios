@@ -1,4 +1,4 @@
-""" EAIOS Application entry point"""
+"""EAIOS Application entry point"""
 
 import logging
 import time
@@ -8,11 +8,10 @@ from importlib.metadata import version
 from fastapi import FastAPI, Request, Response
 from fastapi.staticfiles import StaticFiles
 
+from eaios.api import chat
 from eaios.core.config import get_settings
 from eaios.core.logging_setup import setup_logging
-from eaios.api import chat
 from eaios.web import pages
-
 
 settings = get_settings()
 setup_logging(settings.log_level)
@@ -25,10 +24,10 @@ docs_enabled = settings.environment != "production"
 
 
 app = FastAPI(
-    title = settings.app_name,
-    version = app_version,
-    docs_url = "/docs" if docs_enabled else None,
-    redoc_url = "/redoc" if docs_enabled else None,
+    title=settings.app_name,
+    version=app_version,
+    docs_url="/docs" if docs_enabled else None,
+    redoc_url="/redoc" if docs_enabled else None,
 )
 app.include_router(chat.router)
 app.include_router(pages.router)
@@ -66,6 +65,6 @@ async def log_requests(
 
 
 @app.get("/health")
-def health () -> dict[str, str]:
+def health() -> dict[str, str]:
     "Report that the server is running"
     return {"status": "ok"}

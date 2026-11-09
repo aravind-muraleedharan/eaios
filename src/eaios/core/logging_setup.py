@@ -7,9 +7,9 @@ from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 LOG_DIR = Path("logs")
-LOG_FILE = LOG_DIR/"eaios.log"
-MAX_BYTES = 5_000_000 # Rotate after 5 MB
-BACKUP_COUNT = 5 # Keep the most recent rotates files.
+LOG_FILE = LOG_DIR / "eaios.log"
+MAX_BYTES = 5_000_000  # Rotate after 5 MB
+BACKUP_COUNT = 5  # Keep the most recent rotates files.
 
 
 class JsonFormatter(logging.Formatter):
@@ -54,7 +54,3 @@ def setup_logging(level: str) -> None:
     logger.setLevel(level)
     logger.handlers = [console_handler, file_handler]
     logger.propagate = False
-
-
-
-

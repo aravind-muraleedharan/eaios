@@ -10,9 +10,9 @@ settings = get_settings()
 class ChatRequest(BaseModel):
     """A question sent to the chat endpoint."""
 
-    model_config = ConfigDict(str_strip_whitespace = True)
+    model_config = ConfigDict(str_strip_whitespace=True)
 
-    question: str = Field(min_length = 1, max_length = settings.chat_max_ques_chars)
+    question: str = Field(min_length=1, max_length=settings.chat_max_ques_chars)
 
 
 class ChatResponse(BaseModel):
@@ -20,6 +20,3 @@ class ChatResponse(BaseModel):
 
     answer: str
     model: str
-
-
-
