@@ -1,4 +1,6 @@
-"""This snippet defines the message structure and the methods every conversation store must have."""
+"""
+Defines the message structure and the methods every conversation store must have.
+"""
 
 from typing import Literal, Protocol, TypedDict
 

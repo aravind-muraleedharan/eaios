@@ -1,3 +1,9 @@
+"""Tests for the in-memory conversation store.
+
+Covers creating conversations, saving turns, trimming old turns, expiry (TTL),
+the conversation limit, and that returned history is a safe copy.
+"""
+
 import pytest
 
 from eaios.conversation_store.in_memory import InMemoryConversationStore
